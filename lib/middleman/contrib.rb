@@ -1,7 +1,7 @@
-require "middleman/contrib/version"
+require 'middleman-core'
+require 'middleman/contrib/version'
+require 'middleman/contrib/extension'
 
-module Middleman
-  module Contrib
-    # Your code goes here...
-  end
+::Middleman::Extensions.register(:contrib) do  
+  ::Middleman::Contrib::Extension
 end
