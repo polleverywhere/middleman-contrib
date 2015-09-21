@@ -8,7 +8,7 @@ describe Middleman::Contrib::Helpers do
   describe 'sub_pages' do
     it 'returns an array of pages in the specified folder and any subfolders, sorted shallowist pages first and then alphabetically' do
       paths = app.sub_pages('topic').map(&:path)
-      
+
       expect(paths).to eq ['topic/sub_a.html', 'topic/sub_b.html', 'topic/sub_a/sub_sub_a.html', 'topic/sub_a/sub_sub_b.html']
     end
 

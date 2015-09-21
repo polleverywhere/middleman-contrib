@@ -2,6 +2,16 @@ module Middleman
   module Contrib
     
     module Helpers
+      # Middleman view helper that returns an array of pages found inside the
+      # specified directory.
+      #
+      # @param dir_path [String] The relative path to the directory whose
+      #   sub-pages will be returned
+      # @param filter [Regexp] Optional matcher to filter path names on
+      # @param max_depth [Integer] Optionally limit how deep to match inside
+      #   the path
+      # @return [Array<Middleman::Sitemap::Resource>] All resources matching
+      #   specified limitations set by the parameters.
       def sub_pages(dir_path, opts={})
         opts     = opts.dup
         dir_path = dir_path.chomp('/')
@@ -18,16 +28,6 @@ module Middleman
         end
 
         resources.sort_by { |resource| [resource.path.count('/'), resource.path] }
-        
-        # selector = case dir_path
-        # when String
-        #   dir_path = "#{dir_path.chomp '/'}/"
-        #   proc { |resource| resource.path.start_with?(dir_path) }
-        # when Regexp
-        #   proc { |resource| resource.path =~ dir_path }
-        # end
-        
-        # sitemap.resources.select(&selector).sort_by(&sort)
       end 
     end
 
