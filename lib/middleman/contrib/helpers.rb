@@ -28,7 +28,23 @@ module Middleman
         end
 
         resources.sort_by { |resource| [resource.path.count('/'), resource.path] }
-      end 
+      end
+
+      # Middleman view helper that returns an array of pages that are the direct
+      # ancestors of the current page, starting from the immediate parent to the
+      # eldest ancestor.
+      #
+      # @return [Array<Middleman::Sitemap::Resource>] All ancestral resources
+      def ancestors
+        pages = []
+        page  = current_page
+
+        while (page = page.parent) do
+          pages << page
+        end
+
+        pages
+      end
     end
 
   end

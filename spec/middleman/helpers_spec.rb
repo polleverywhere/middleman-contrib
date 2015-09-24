@@ -67,4 +67,29 @@ describe Middleman::Contrib::Helpers do
       end
     end
   end
+
+
+  describe 'ancestors' do
+    context 'site root has an index.html page' do
+      it 'returns an empty array for index.html' do
+        app.current_path = '/index.html'
+        expect(app.ancestors.map(&:path)).to eq []
+      end
+
+      it 'returns an array with just index.html in it for a top-level page' do
+        app.current_path = '/topic.html'
+        expect(app.ancestors.map(&:path)).to eq ['index.html']
+      end
+
+      it 'returns an array of all the ancestral pages from parent to eldest ancestor' do
+        app.current_path = '/topic/sub_a/sub_sub_b.html'
+        expect(app.ancestors.map(&:path)).to eq ['topic/sub_a.html', 'topic.html', 'index.html']
+      end
+
+      it 'skips any pages in the middle that don\'t exist including index.html since no top-level ancestor' do
+        app.current_path = '/deep/sub_c/sub_sub_a.html'
+        expect(app.ancestors.map(&:path)).to eq []
+      end
+    end
+  end
 end
