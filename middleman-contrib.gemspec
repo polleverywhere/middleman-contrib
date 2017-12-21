@@ -6,12 +6,12 @@ require 'middleman/contrib/version'
 Gem::Specification.new do |spec|
   spec.name          = "middleman-contrib"
   spec.version       = Middleman::Contrib::VERSION
-  spec.authors       = ["Brad Lindsay"]
-  spec.email         = ["lindsay@polleverywhere.com"]
+  spec.authors       = ["Brad Gessler", "Paul", "Brad Lindsay"]
+  spec.email         = ["brad@polleverywhere.com", "paul@polleverywhere.com", "lindsay@polleverywhere.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Common methods used for middleman sites.}
+  spec.description   = %q{Common methods used for middleman sites.}
+  spec.homepage      = "https://github.com/polleverywhere/middleman-contrib"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
